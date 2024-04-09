@@ -19,10 +19,26 @@ function GiphyImg() {
     const fetchData = async () => {
       let urlList = [];
 
-      for (let i = 1; i < 13; i++) {
+      for (let i = 0; i < 20; i++) {
         const result = await fetch("https://random.dog/woof.json");
         result.json().then((json) => {
-          urlList.push(json.url);
+
+          console.log(`url result: ${json.url}`);
+          // console.log(`to string? ${json.url.toString()}`);
+          const toString = json.url.toString();
+           let last3 = toString.substr(toString.length - 3);
+           console.log(`last3: ${last3}`);
+          last3 = last3.toLowerCase();
+          console.log(`last3: ${last3}`);
+
+          if (last3 == "jpg"){
+            urlList.push(json.url);
+          }
+
+        }).catch((error) => {
+          console.log(error);
+          alert(error);
+          // This seems to work ok but it's not actually loggin an error
         });
         setImageURL1(urlList[0]);
         setImageURL2(urlList[1]);
@@ -63,6 +79,6 @@ function GiphyImg() {
 
 export default GiphyImg;
 
-// Random dog photos rendered!
-// Our API is sometimes returning images (videos more likely) that are too large to render. 
-// How do we make it so that either it only gets usable urls or it tries another call if it gets one we don't like..... ??
+// We're now calling the api 20 times (which is wasteful) but we're only adding the picture to our array if it's a jpg
+
+// Maybe a better way to do it would be to establish the array, then while the length is less than n call the api...... We could also allow the user to pick the length to change difficulty
