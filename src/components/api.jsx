@@ -42,23 +42,27 @@ function GiphyImg() {
   }, []);
 
   return (
-    <>
-      <img className="dogPic" src={imageURL1} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL2} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL3} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL4} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL5} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL6} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL7} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL8} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL9} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL10} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL11} alt="Random dog picture"></img>
-      <img className="dogPic"  src={imageURL12} alt="Random dog picture"></img>
-    </>
+
+      <div className="cardContainer">
+        <img className="dogPic" src={imageURL1} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL2} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL3} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL4} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL5} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL6} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL7} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL8} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL9} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL10} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL11} alt="Random dog picture"></img>
+        <img className="dogPic" src={imageURL12} alt="Random dog picture"></img>
+      </div>
+
   );
 }
 
 export default GiphyImg;
 
-// Random dog photo rendered!
+// Random dog photos rendered!
+// Our API is sometimes returning images (videos more likely) that are too large to render. 
+// How do we make it so that either it only gets usable urls or it tries another call if it gets one we don't like..... ??
