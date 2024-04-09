@@ -3,6 +3,7 @@ import "../style.css";
 import GiphyImg from "./api";
 import Clock from "./clock";
 import Scoreboard from "./scoreboard";
+import Gameboard from "./gameboard";
 
 function MainPage() {
   const [currentScore, setCurrentScore] = useState(0);
@@ -13,6 +14,7 @@ function MainPage() {
     <div className="page">
       <h1>Memory Card Project</h1>
       <Scoreboard currentScore={currentScore} topScore = {topScore}/>
+      <Gameboard/>
       <GiphyImg />
       <Clock/>
     </div>

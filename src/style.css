@@ -5,23 +5,36 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing:border-box;
 }
 
 .page {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .page h1 {
   text-align: center;
 }
 
-.scoreBoard {
+.scoreboard {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  width: 90vw;
+  height: 90vw;
+  border: 3px solid red;
+  min-width: 12rem;
+  min-height: 12rem;
+}
 
 .dogPic {
 width: 25vw;

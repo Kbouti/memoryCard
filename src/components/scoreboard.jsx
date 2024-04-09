@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 function Scoreboard({currentScore, topScore}) {
 
 return (
-    <section className="scoreBoard">
+    <section className="scoreboard">
         <div className="scoreContainer currentScore">
             <label>Current Score: {currentScore}</label>
         </div>
