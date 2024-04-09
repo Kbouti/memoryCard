@@ -16,6 +16,13 @@
   text-align: center;
 }
 
+.scoreBoard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
 .dogPic {
 width: 25vw;
 height:25vw;

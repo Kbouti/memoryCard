@@ -2,11 +2,17 @@ import { useState } from "react";
 import "../style.css";
 import GiphyImg from "./api";
 import Clock from "./clock";
+import Scoreboard from "./scoreboard";
 
 function MainPage() {
+  const [currentScore, setCurrentScore] = useState(0);
+  const [topScore, setTopScore] = useState(0);
+
+
   return (
     <div className="page">
       <h1>Memory Card Project</h1>
+      <Scoreboard currentScore={currentScore} topScore = {topScore}/>
       <GiphyImg />
       <Clock/>
     </div>
