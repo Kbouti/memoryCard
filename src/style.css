@@ -7,6 +7,15 @@
   margin: 0;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.page h1 {
+  text-align: center;
+}
+
 .dogPic {
 width: 25vw;
 height:25vw;

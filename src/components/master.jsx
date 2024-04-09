@@ -5,11 +5,11 @@ import Clock from "./clock";
 
 function MainPage() {
   return (
-    <>
+    <div className="page">
       <h1>Memory Card Project</h1>
       <GiphyImg />
       <Clock/>
-    </>
+    </div>
   );
 }
 
@@ -22,3 +22,5 @@ export default MainPage
 
 // We'll render all the game tiles on the first turn, then let the user click one. 
 // Then we'll reoeder the tiles and have the user click again. If they click a tile that's already been clicked -- They lose!
+
+// Ideally we fetch all the urls we need in one place, then pass them to a prop ro render the cards?
