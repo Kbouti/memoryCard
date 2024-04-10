@@ -6,6 +6,7 @@
   padding: 0;
   margin: 0;
   box-sizing:border-box;
+  overflow: scroll;
 }
 
 .page {
@@ -32,10 +33,6 @@
   width: 90vw;
   height: 90vw;
   border: 3px solid red;
-  min-width: 800px;
-  min-height: 800px;
-  max-width: 60rem;
-  max-height: 60rem;
 }
 
 
@@ -46,11 +43,6 @@ flex-direction: column;
 justify-content: center;
 
 }
-
-
-
-/* Our current layout issue is with the images. Without the images the cards fit in the gameboard. 
-We gotta find the property that will make the image just settle TF down */
 
 .gameCard img {
   width: 100%;
