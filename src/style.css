@@ -32,16 +32,19 @@
   width: 90vw;
   height: 90vw;
   border: 3px solid red;
-  min-width: 12rem;
-  min-height: 12rem;
+  min-width: 800px;
+  min-height: 800px;
   max-width: 60rem;
   max-height: 60rem;
 }
 
 
 .gameCard {
-margin: 1rem;
 border: 2px solid pink;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
 }
 
 
@@ -52,12 +55,14 @@ We gotta find the property that will make the image just settle TF down */
 .gameCard img {
   width: 100%;
   height: 100%;
-  /* padding: 1rem; */
+  object-fit:cover;
+  max-height: 15rem;
+
 }
 
 .dogPic {
-width: 25vw;
-height:25vw;
+width: 100%;
+height:100%;
 }
 
 .cardContainer {

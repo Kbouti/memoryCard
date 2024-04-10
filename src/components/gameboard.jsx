@@ -9,7 +9,7 @@ for (let i = 0;i < 12;i++){
     let key = i;
     gameCards.push(
     <div className="gameCard" key = {key}>
-        <img src= {urlText} alt="random dog picture"></img>
+        <img className="dogPic" src= {urlText} alt="random dog picture"></img>
     </div>)
 }
 
