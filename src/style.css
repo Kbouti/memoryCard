@@ -7,6 +7,8 @@
   margin: 0;
   box-sizing:border-box;
   overflow: scroll;
+  background-color: burlywood;
+
 }
 
 .page {
@@ -17,6 +19,8 @@
 
 .page h1 {
   text-align: center;
+  font-size: 4rem;
+
 }
 
 .scoreboard {
@@ -30,17 +34,22 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  grid-gap: .5rem;
   width: 90vw;
   height: 90vw;
-  border: 3px solid red;
+  /* border: 3px solid red; */
+  padding: .5rem;
+  background-color: #80BCEA;
+  border-radius:2%;
+
 }
 
 
 .gameCard {
-border: 2px solid pink;
 display: flex;
 flex-direction: column;
 justify-content: center;
+border-radius:10%;
 
 }
 
@@ -49,6 +58,7 @@ justify-content: center;
   height: 100%;
   object-fit:cover;
   max-height: 15rem;
+  border-radius:2%;
 
 }
 

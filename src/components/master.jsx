@@ -29,13 +29,17 @@ function MainPage() {
       console.log(`newArray is long enough.Length: ${newArray.length}`);
       setUrlList(newArray);
     };
-
     fetchData();
+
+    // return () => {
+    // Cleanup function??
+    // }
+
   }, []);
 
   return (
     <div className="page">
-      <h1>Memory Card Project</h1>
+      <h1>Memory Card</h1>
       <Scoreboard currentScore={currentScore} topScore={topScore} />
       <Gameboard urlList={urlList} />
       <Clock />
