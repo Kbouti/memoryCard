@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 
 function scramble(key) {
   const cards = document.getElementsByClassName("gameCard");
+  const targetCard = key.target.parentElement;
   console.log(`Scramble function called. Cards: ${cards}`);
-  console.log(`this.key: ${this.key}`);
-  console.log(this.getAttribute("key"));
-console.log(`clicked key: ${key}`);
-console.log(`key.target.parentElement: ${key.target.parentElement})}`)
-console.log(`key.target.parentElement.getAttribute("key"): ${key.target.parentElement.getAttribute("key")})}`)
+  console.log(`targetCard: ${targetCard}`);
+    console.log(`targetCard.classList: ${targetCard.classList}`)
+
 
   // Now if we could just get this card's key??
   // Remove event listeners?
