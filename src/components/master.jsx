@@ -10,6 +10,8 @@ function MainPage() {
   const [topScore, setTopScore] = useState(0);
   const [urlList, setUrlList] = useState([]);
 
+  
+
   useEffect(() => {
     const fetchData = async () => {
       let newArray = [];
