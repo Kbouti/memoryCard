@@ -9,8 +9,28 @@ function MainPage() {
   const [currentScore, setCurrentScore] = useState(0);
   const [topScore, setTopScore] = useState(0);
   const [urlList, setUrlList] = useState([]);
+  const [photosReceived, setPhotosReceived] = useState(false);
 
-  
+  // ******************************************************************************
+  // ******************************************************************************
+  // We're going about this wrong. We can make this easier.
+  // MainPage is master. establish all necessary props here.
+
+  //    if (!photosReceived){
+  //      <p>loading please wait</p>
+  //    else
+  //    <Gameboard/>
+  //    }
+  // ******************************************************************************
+  // ******************************************************************************
+  if (!photosReceived) {
+    console.log(`waiting on data`);
+// So here we need to call the api (Or call a function that calls the api???)
+    return <div>Waiting on Data</div>;
+  } else {
+    console.log(`We got that data! `);
+    return <div>We got that data! </div>;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +56,6 @@ function MainPage() {
     // return () => {
     // Cleanup function??
     // }
-
   }, []);
 
   return (
@@ -51,4 +70,4 @@ function MainPage() {
 
 export default MainPage;
 
-//  We're now calling the api 12 times in master, then passing our url objects to gameboard where we can make the cards. 
+//  We're now calling the api 12 times in master, then passing our url objects to gameboard where we can make the cards.

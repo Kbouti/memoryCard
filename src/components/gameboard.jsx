@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 function Gameboard({urlList}) {
 
+//  I think we want to put our event listeners in here as an anonymous function???
+
 
 const gameCards = [];
 for (let i = 0;i < 12;i++){
