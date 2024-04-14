@@ -5,7 +5,7 @@ import MainPage from './components/master.jsx'
 
 import beginGame from './components/gamePlay.jsx'
 
-beginGame();
+// beginGame();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
