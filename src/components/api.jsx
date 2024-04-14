@@ -1,20 +1,37 @@
 import { useState, useEffect } from "react";
 import "../style.css";
 
-
-
-function callAPI({photosReceived, setPhotosReceived}){
+function CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived }) {
   console.log(`callApi called`);
   console.log(`photosReceived: ${photosReceived}`);
-// ************************************************************************
-// Ok here we gotta useEffect to call the API
-// ************************************************************************
+  console.log(`urlList: ${urlList}`);
+
+  useEffect(() => {
+    async function fetchData() {
+      let newArray = [];
+      while (newArray.length < 12) {
+        const result = await fetch("https://random.dog/woof.json");
+        result.json().then((json) => {
+          const string = json.url.toString();
+          let last3 = string.substr(string.length - 3);
+          last3 = last3.toLowerCase();
+          if (last3 == "jpg") {
+            newArray.push(json.url);
+            console.log(
+              `added a asuitable url. New length: ${newArray.length}`
+            );
+          }
+        });
+      }
+      console.log(`newArray length: ${newArray.length}`);
+      console.log(`newArray: ${newArray}`);
+      return newArray;
+    }
+    fetchData();
+  });
 }
 
-export default callAPI;
-
-
-
+export default CallAPI;
 
 // function GiphyImg() {
 //   const [imageURL1, setImageURL1] = useState("");

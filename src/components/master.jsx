@@ -4,7 +4,7 @@ import "../style.css";
 import Clock from "./clock";
 import Scoreboard from "./scoreboard";
 import Gameboard from "./gameboard";
-import callAPI from "./api";
+import CallAPI from "./api";
 
 
 
@@ -29,7 +29,7 @@ function MainPage() {
   // ******************************************************************************
   if (!photosReceived) {
     console.log(`waiting on data`);
-    callAPI({photosReceived, setPhotosReceived})
+    CallAPI({urlList, setUrlList, photosReceived, setPhotosReceived})
 // So here we need to call the api (Or call a function that calls the api???)
     return <div>Waiting on Data</div>;
   } else {
