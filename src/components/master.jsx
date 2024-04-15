@@ -30,8 +30,12 @@ function MainPage() {
     return (
       <>
         <div>We got that data! </div>
+        <Gameboard
+        urlList={urlList}/>
       </>
     );
+  } else {
+    alert(`error, photosReceived neither true or false. value: ${photosReceived}`);
   }
 
 }
