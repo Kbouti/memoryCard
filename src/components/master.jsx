@@ -16,8 +16,15 @@ function MainPage() {
   // We're now displaying a loading message until we get the data, that's a good start.
   // The error we're getting now is: "Rendered fewer hooks than expected. This may be caused by an early return statement"
   // I think this might have to do with using useEffect with a loop. They say you can't call hooks inside loops, conditions, or nested callbacks
-  // ************************************************************************************
 
+// Ok so apparently something something you can't have a hook called in a conditional - it has to run every time. 
+// So I moved this callAPI line up above the conditional. But the problem is now the conditional only runs once and it's always false
+// Maybe a while loop instead of if conditional? Naww not liking the while loop. 
+
+  // ************************************************************************************
+  let newArray = CallAPI(urlList, setUrlList, photosReceived, setPhotosReceived);
+
+  
   if (!photosReceived) {
     console.log(`waiting on data`);
     CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived });
@@ -30,10 +37,6 @@ function MainPage() {
         <div>We got that data! </div>
         <Gameboard urlList={urlList} />
       </>
-    );
-  } else {
-    alert(
-      `error, photosReceived neither true or false. value: ${photosReceived}`
     );
   }
 }

@@ -5,10 +5,10 @@ function CallAPI(urlList, setUrlList, photosReceived, setPhotosReceived) {
   console.log(`callApi called`);
   console.log(`photosReceived: ${photosReceived}`);
   console.log(`urlList: ${urlList}`);
+  let newArray = [];
 
-  useEffect(() => {
+  useEffect((urlList,setUrlList, setPhotosReceived) => {
     async function fetchData() {
-      let newArray = [];
       while (newArray.length < 12) {
         const result = await fetch("https://random.dog/woof.json");
         result.json().then((json) => {
@@ -26,12 +26,12 @@ function CallAPI(urlList, setUrlList, photosReceived, setPhotosReceived) {
       console.log(`calling state setters`);
       setUrlList(newArray);
       setPhotosReceived(true);
-      return;
+      return newArray;
       // Calling setUrlList here causes an infinite loop, because
     }
     fetchData();
   });
-  return;
+  return newArray;
 }
 
 export default CallAPI;
