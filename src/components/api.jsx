@@ -25,7 +25,10 @@ function CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived }) {
       }
       console.log(`newArray length: ${newArray.length}`);
       console.log(`newArray: ${newArray}`);
-      return newArray;
+setUrlList(newArray);
+setPhotosReceived(true);
+return;
+// Calling setUrlList here causes an infinite loop, because 
     }
     fetchData();
   });
