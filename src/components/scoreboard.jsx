@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Scoreboard({currentScore, topScore}) {
+function Scoreboard(currentScore, topScore) {
 
 return (
     <section className="scoreboard">

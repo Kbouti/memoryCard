@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../style.css";
 
-function CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived }) {
+function CallAPI(urlList, setUrlList, photosReceived, setPhotosReceived) {
   console.log(`callApi called`);
   console.log(`photosReceived: ${photosReceived}`);
   console.log(`urlList: ${urlList}`);
