@@ -4,6 +4,7 @@ function Gameboard({urlList}) {
 
 //  I think we want to put our event listeners in here as an anonymous function???
 
+console.log(`Gameboard component called`);
 
 const gameCards = [];
 for (let i = 0;i < 12;i++){

@@ -17,21 +17,21 @@ function CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived }) {
           last3 = last3.toLowerCase();
           if (last3 == "jpg") {
             newArray.push(json.url);
-            console.log(
-              `added a asuitable url. New length: ${newArray.length}`
-            );
+            console.log(`added a suitable url. New length: ${newArray.length}`);
           }
         });
       }
       console.log(`newArray length: ${newArray.length}`);
-      console.log(`newArray: ${newArray}`);
-setUrlList(newArray);
-setPhotosReceived(true);
-return;
-// Calling setUrlList here causes an infinite loop, because 
+      console.log(`newArray ${newArray} is long enough now. `);
+      console.log(`calling state setters`);
+      setUrlList(newArray);
+      setPhotosReceived(true);
+      return;
+      // Calling setUrlList here causes an infinite loop, because
     }
     fetchData();
   });
+  return;
 }
 
 export default CallAPI;

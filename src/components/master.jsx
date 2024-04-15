@@ -12,32 +12,29 @@ function MainPage() {
   const [urlList, setUrlList] = useState([]);
   const [photosReceived, setPhotosReceived] = useState(false);
 
-
-// ************************************************************************************
-// We're now displaying a loading message until we get the data, that's a good start. 
-// The error we're getting now is: "Rendered fewer hooks than expected. This may be caused by an early return statement"
-// I think this might have to do with using useEffect with a loop. They say you can't call hooks inside loops, conditions, or nested callbacks
-// ************************************************************************************
-
+  // ************************************************************************************
+  // We're now displaying a loading message until we get the data, that's a good start.
+  // The error we're getting now is: "Rendered fewer hooks than expected. This may be caused by an early return statement"
+  // I think this might have to do with using useEffect with a loop. They say you can't call hooks inside loops, conditions, or nested callbacks
+  // ************************************************************************************
 
   if (!photosReceived) {
     console.log(`waiting on data`);
     CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived });
     // So here we need to call the api (Or call a function that calls the api???)
     return <div>Waiting on Data</div>;
-  } else if (photosReceived){
+  } else if (photosReceived) {
     console.log(`We got that data! `);
     return (
       <>
         <div>We got that data! </div>
-        <Gameboard
-        urlList={urlList}/>
+        <Gameboard urlList={urlList} />
       </>
     );
   } else {
-    alert(`error, photosReceived neither true or false. value: ${photosReceived}`);
+    alert(
+      `error, photosReceived neither true or false. value: ${photosReceived}`
+    );
   }
-
 }
 export default MainPage;
-
