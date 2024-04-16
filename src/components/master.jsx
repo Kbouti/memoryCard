@@ -13,31 +13,77 @@ function MainPage() {
   const [photosReceived, setPhotosReceived] = useState(false);
 
   // ************************************************************************************
-  // We're now displaying a loading message until we get the data, that's a good start.
-  // The error we're getting now is: "Rendered fewer hooks than expected. This may be caused by an early return statement"
-  // I think this might have to do with using useEffect with a loop. They say you can't call hooks inside loops, conditions, or nested callbacks
 
-// Ok so apparently something something you can't have a hook called in a conditional - it has to run every time. 
-// So I moved this callAPI line up above the conditional. But the problem is now the conditional only runs once and it's always false
-// Maybe a while loop instead of if conditional? Naww not liking the while loop. 
-
+// https://www.youtube.com/watch?v=-4XpG5_Lj_o
+// https://www.youtube.com/watch?v=qdCHEUaFhBk
   // ************************************************************************************
-  let newArray = CallAPI(urlList, setUrlList, photosReceived, setPhotosReceived);
 
-  
-  if (!photosReceived) {
-    console.log(`waiting on data`);
-    CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived });
-    // So here we need to call the api (Or call a function that calls the api???)
-    return <div>Waiting on Data</div>;
-  } else if (photosReceived) {
-    console.log(`We got that data! `);
-    return (
-      <>
-        <div>We got that data! </div>
-        <Gameboard urlList={urlList} />
-      </>
-    );
-  }
+
+let urlArray = [];
+
+
+useEffect(() => {
+  fetch("https://random.dog/woof.json")
+  .then(result => {
+    return result.json()
+  })
+  .then(result => {
+    let url = result.url;
+    console.log(`url: ${url}`);
+    if (url.toString().substr(url.toString().length - 3).toLowerCase() == "jpg"){
+      console.log(`found a jpg`)
+      urlArray.push(url);
+    }
+    // Ok cool. We've fetched one URl when the page loaded. 
+
+    // Our problem is that we can't call a hook conditionally, or in a loop. 
+    // So how do we call this API 12 times  without repeating ourselves???
+    //  Seems like we gotta get into promiseAll()
+    // https://www.squash.io/executing-multiple-fetch-calls-simultaneously-in-reactjs/
+  });
+}, [])
+
+
+return (
+  <>
+  <h1>Memory Card</h1>
+  {!photosReceived ? <div>Loading cute doggos</div> : <Gameboard/>}
+  </>
+)
+
+
 }
 export default MainPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let newArray = CallAPI(urlList, setUrlList, photosReceived, setPhotosReceived);
+
+  
+// if (!photosReceived) {
+//   console.log(`waiting on data`);
+//   CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived });
+//   // So here we need to call the api (Or call a function that calls the api???)
+//   return <div>Waiting on Data</div>;
+// } else if (photosReceived) {
+//   console.log(`We got that data! `);
+//   return (
+//     <>
+//       <div>We got that data! </div>
+//       <Gameboard urlList={urlList} />
+//     </>
+//   );
+// }

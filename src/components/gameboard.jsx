@@ -6,21 +6,27 @@ function Gameboard({urlList}) {
 
 console.log(`Gameboard component called`);
 
-const gameCards = [];
-for (let i = 0;i < 12;i++){
-    let urlText = urlList[i];
-    let key = i;
-    gameCards.push(
-    <div className="gameCard" key = {key}>
-        <img className="dogPic" src= {urlText} alt="random dog picture"></img>
-    </div>)
-}
+// 
 
-
-
-  return <div className="gameboard">
-{gameCards}
-  </div>;
+  return( <div className="gameboard">
+<h2>gameboard</h2>
+  </div>);
 }
 
 export default Gameboard;
+
+
+
+
+
+
+// const gameCards = [];
+// for (let i = 0;i < 12;i++){
+//     let urlText = urlList[i];
+//     let key = i;
+//     gameCards.push(
+//     <div className="gameCard" key = {key}>
+//         <img className="dogPic" src= {urlText} alt="random dog picture"></img>
+//     </div>)
+// }
+
