@@ -14,65 +14,71 @@ function MainPage() {
 
   // ************************************************************************************
 
-// https://www.youtube.com/watch?v=-4XpG5_Lj_o
-// https://www.youtube.com/watch?v=qdCHEUaFhBk
+  // https://www.youtube.com/watch?v=-4XpG5_Lj_o
+  // https://www.youtube.com/watch?v=qdCHEUaFhBk
   // ************************************************************************************
 
+  let urlArray = [];
 
-let urlArray = [];
+  useEffect(() => {
+    fetch("https://random.dog/woof.json")
+      .then((result) => {
+        return result.json();
+      })
+      .then((result) => {
+        let url = result.url;
+        console.log(`url: ${url}`);
+        if (
+          url
+            .toString()
+            .substr(url.toString().length - 3)
+            .toLowerCase() == "jpg"
+        ) {
+          console.log(`found a jpg`);
+          urlArray.push(url);
+          console.log(`urlArray: ${urlArray}`);
+        }
 
+        return fetch("https://random.dog/woof.json")
+          .then((result) => {
+            return result.json();
+          })
+          .then((result) => {
+            let url = result.url;
+            console.log(`url2: ${url}`);
+            if (
+              url
+                .toString()
+                .substr(url.toString().length - 3)
+                .toLowerCase() == "jpg"
+            ) {
+              console.log(`found a jpg`);
+              urlArray.push(url);
+              console.log(`urlArray: ${urlArray}`);
+            }
+            // And here's where we would call our state setter. For example:
+            // setPhotosReceived(true);
+            // OKay...... This seems to be working but there's gotta be a better way than just to chain the crap out of these fetch statements. right?????
+          });
 
-useEffect(() => {
-  fetch("https://random.dog/woof.json")
-  .then(result => {
-    return result.json()
-  })
-  .then(result => {
-    let url = result.url;
-    console.log(`url: ${url}`);
-    if (url.toString().substr(url.toString().length - 3).toLowerCase() == "jpg"){
-      console.log(`found a jpg`)
-      urlArray.push(url);
-    }
-    // Ok cool. We've fetched one URl when the page loaded. 
+        // Our problem is that we can't call a hook conditionally, or in a loop.
+        // So how do we call this API 12 times  without repeating ourselves???
+        //  Seems like we gotta get into promiseAll()
+        // https://www.squash.io/executing-multiple-fetch-calls-simultaneously-in-reactjs/
+      });
+  }, []);
 
-    // Our problem is that we can't call a hook conditionally, or in a loop. 
-    // So how do we call this API 12 times  without repeating ourselves???
-    //  Seems like we gotta get into promiseAll()
-    // https://www.squash.io/executing-multiple-fetch-calls-simultaneously-in-reactjs/
-  });
-}, [])
-
-
-return (
-  <>
-  <h1>Memory Card</h1>
-  {!photosReceived ? <div>Loading cute doggos</div> : <Gameboard/>}
-  </>
-)
-
-
+  return (
+    <>
+      <h1>Memory Card</h1>
+      {!photosReceived ? <div>Loading cute doggos</div> : <Gameboard />}
+    </>
+  );
 }
 export default MainPage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // let newArray = CallAPI(urlList, setUrlList, photosReceived, setPhotosReceived);
 
-  
 // if (!photosReceived) {
 //   console.log(`waiting on data`);
 //   CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived });
