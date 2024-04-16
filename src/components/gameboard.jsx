@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Gameboard(urlList) {
+function Gameboard({urlList}) {
 
 //  I think we want to put our event listeners in here as an anonymous function???
 
