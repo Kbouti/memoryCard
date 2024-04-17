@@ -20,12 +20,41 @@ function Gameboard({
     );
   }
   if (!urlsReceived) {
+    console.log(`urlsReceived is false`);
+
+    let newArray = [];
+
+    // ************************************************************************************
+    // We're calling this conditionally and that's not allowed.
+    // WTF do I do if I can't call this conditionally????
+    // ************************************************************************************
+    useEffect((urlList, setUrlList, urlsReceived, setUrlsReceived) => {
+      async function fetchData() {
+        while (newArray.length < 12) {
+          const result = await fetch("https://random.dog/woof.json");
+          result.json().then((json) => {
+            const string = json.url.toString();
+            let last3 = string.substr(string.length - 3);
+            last3 = last3.toLowerCase();
+            if (last3 == "jpg") {
+              newArray.push(json.url);
+              console.log(
+                `added a suitable url. New length: ${newArray.length}`
+              );
+            }
+          });
+        }
+        console.log(`newArray length: ${newArray.length}`);
+        return newArray;
+      }
+      fetchData();
+    });
+
+    console.log(`This statement logs before newArray has filled with data`);
+
     return <div className="loading">Loading...</div>;
   } else {
-    // Trying to figure out how/when to call the API.....
-    // If I call the API in each card we won't be able to prevent duplicates
-    // So call it here in a loop and get 12 different URLs? That still sounds like the best way to do it. Then we draft each card with it's own unique url from the list
-
+    console.log(`urlsReceived is true`);
     return (
       <div className="gameboard">
         <Card index="1" />
