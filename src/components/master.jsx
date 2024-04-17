@@ -18,55 +18,79 @@ function MainPage() {
   // https://www.youtube.com/watch?v=qdCHEUaFhBk
   // ************************************************************************************
 
+  const fetchRequest1 = fetch("https://random.dog/woof.json");
+  const fetchRequest2 = fetch("https://random.dog/woof.json");
+  const fetchRequest3 = fetch("https://random.dog/woof.json");
+  const fetchRequest4 = fetch("https://random.dog/woof.json");
+  const fetchRequest5 = fetch("https://random.dog/woof.json");
+  const fetchRequest6 = fetch("https://random.dog/woof.json");
+  const fetchRequest7 = fetch("https://random.dog/woof.json");
+  const fetchRequest8 = fetch("https://random.dog/woof.json");
+  const fetchRequest9 = fetch("https://random.dog/woof.json");
+  const fetchRequest10 = fetch("https://random.dog/woof.json");
+  const fetchRequest11 = fetch("https://random.dog/woof.json");
+  const fetchRequest12 = fetch("https://random.dog/woof.json");
+  const fetchRequest13 = fetch("https://random.dog/woof.json");
+  const fetchRequest14 = fetch("https://random.dog/woof.json");
+  const fetchRequest15 = fetch("https://random.dog/woof.json");
+  const fetchRequest16 = fetch("https://random.dog/woof.json");
+
   let urlArray = [];
 
   useEffect(() => {
-    fetch("https://random.dog/woof.json")
-      .then((result) => {
-        return result.json();
-      })
-      .then((result) => {
-        let url = result.url;
-        console.log(`url: ${url}`);
-        if (
-          url
-            .toString()
-            .substr(url.toString().length - 3)
-            .toLowerCase() == "jpg"
-        ) {
-          console.log(`found a jpg`);
-          urlArray.push(url);
-          console.log(`urlArray: ${urlArray}`);
-        }
+    Promise.all([
+      fetchRequest1,
+      fetchRequest2,
+      fetchRequest3,
+      fetchRequest4,
+      fetchRequest5,
+      fetchRequest6,
+      fetchRequest7,
+      fetchRequest8,
+      fetchRequest9,
+      fetchRequest10,
+      fetchRequest11,
+      fetchRequest12,
+      fetchRequest13,
+      fetchRequest14,
+      fetchRequest15,
+      fetchRequest16,
+    ]).then((responses) => {
+      console.log(responses);
 
-        return fetch("https://random.dog/woof.json")
-          .then((result) => {
-            return result.json();
-          })
-          .then((result) => {
-            let url = result.url;
-            console.log(`url2: ${url}`);
-            if (
-              url
-                .toString()
-                .substr(url.toString().length - 3)
-                .toLowerCase() == "jpg"
-            ) {
-              console.log(`found a jpg`);
-              urlArray.push(url);
-              console.log(`urlArray: ${urlArray}`);
-            }
-            // And here's where we would call our state setter. For example:
-            // setPhotosReceived(true);
-            // OKay...... This seems to be working but there's gotta be a better way than just to chain the crap out of these fetch statements. right?????
-          });
+      const [
+        response1,
+        response2,
+        response3,
+        response4,
+        response5,
+        response6,
+        response7,
+        response8,
+        response9,
+        response10,
+        response11,
+        response12,
+        response13,
+        response14,
+        response15,
+        response16,
+      ] = responses;
+      for (let i = 0; i < responses.length; i++) {
+        console.log(`responses[i]: ${responses[i]}`);
 
-        // Our problem is that we can't call a hook conditionally, or in a loop.
-        // So how do we call this API 12 times  without repeating ourselves???
-        //  Seems like we gotta get into promiseAll()
-        // https://www.squash.io/executing-multiple-fetch-calls-simultaneously-in-reactjs/
-      });
+        let newResponse = responses[i].json().then((response) => {
+
+          let targetUrl = response.url;
+          console.log(`target ${i} url: ${targetUrl}`);
+// Here we have obtained the URL we're looking for!! 
+// There is however a strange error message Response.json: Body has already been consumed
+        });
+      }
+    });
   }, []);
+
+
 
   return (
     <>
@@ -76,20 +100,3 @@ function MainPage() {
   );
 }
 export default MainPage;
-
-// let newArray = CallAPI(urlList, setUrlList, photosReceived, setPhotosReceived);
-
-// if (!photosReceived) {
-//   console.log(`waiting on data`);
-//   CallAPI({ urlList, setUrlList, photosReceived, setPhotosReceived });
-//   // So here we need to call the api (Or call a function that calls the api???)
-//   return <div>Waiting on Data</div>;
-// } else if (photosReceived) {
-//   console.log(`We got that data! `);
-//   return (
-//     <>
-//       <div>We got that data! </div>
-//       <Gameboard urlList={urlList} />
-//     </>
-//   );
-// }
