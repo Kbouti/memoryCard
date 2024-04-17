@@ -34,7 +34,7 @@ function CallAPI({urlList, setUrlList, photosReceived, setPhotosReceived}) {
   return newArray;
 }
 
-export default CallAPI;
+// export default CallAPI;
 
 // function GiphyImg() {
 //   const [imageURL1, setImageURL1] = useState("");

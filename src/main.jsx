@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import MainPage from './components/master.jsx'
+import MainPage from "./components/master.jsx";
 
-import beginGame from './components/gamePlay.jsx'
+import Header from "./components/header.jsx";
+import Body from "./components/body.jsx";
 
-// beginGame();
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <MainPage />
-  </React.StrictMode>,
-)
+    <Header />
+    <Body />
+  </React.StrictMode>
+);
