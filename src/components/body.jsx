@@ -8,6 +8,7 @@ import Gameboard from "./gameboard";
 export default function Body() {
     const [currentScore, setCurrentScore] = useState(0);
     const [topScore, setTopScore] = useState(0);
+    const [urlsReceived, setUrlsReceived] = useState(false);
   
 
 
@@ -16,7 +17,14 @@ export default function Body() {
       <Scoreboard
       currentScore={currentScore}
       topScore={topScore} />
-      <Gameboard/>
+      <Gameboard
+      currentScore={currentScore}
+      setCurrentScore={setCurrentScore}
+      topScore={topScore}
+      setTopScore={setTopScore}
+      urlsReceived={urlsReceived}
+      setUrlsReceived={setUrlsReceived}
+      />
     </>
 
   );
