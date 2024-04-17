@@ -18,6 +18,21 @@ function MainPage() {
   // https://www.youtube.com/watch?v=qdCHEUaFhBk
   // ************************************************************************************
 
+
+
+
+  // What am I doing.... Each card should call the API!
+
+
+  // Game: 
+  // establish gameboard
+  // establish card
+  // render gameboard with 12 cards
+  // Each card must get a unique key
+
+
+  
+
   const fetchRequest1 = fetch("https://random.dog/woof.json");
   const fetchRequest2 = fetch("https://random.dog/woof.json");
   const fetchRequest3 = fetch("https://random.dog/woof.json");
@@ -97,15 +112,12 @@ function MainPage() {
       // When this code ^^ runs the loop has NOT yet complete.... Because it's waiting for all the promises to return
       setTimeout(() => {
         console.log(`Set timeout. Suitable urls: ${urlArray.length}`);
-              // When this code ^^ runs the loop has completed, but only because we gave it time to. 
-
+        // When this code ^^ runs the loop has completed, but only because we gave it time to.
       }, 1000);
     });
-
-
-    return ()=>{
-      console.log(`unMount cleanup function`)
-    }
+    return () => {
+      console.log(`unMount cleanup function`);
+    };
   }, []);
 
   return (
