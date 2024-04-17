@@ -1,5 +1,9 @@
 #root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 * {
@@ -8,21 +12,26 @@
   box-sizing:border-box;
   overflow: scroll;
   background-color: burlywood;
-
 }
 
-.page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.page h1 {
+h1 {
   text-align: center;
   font-size: 4rem;
 
 }
 
+
+
+.loading {
+  display: flex;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 3rem;
+  padding: 3rem 6rem;
+  font-size: 2rem;
+}
 .scoreboard {
   display: flex;
   flex-direction: row;

@@ -20,7 +20,7 @@ function Gameboard({
     );
   }
   if (!urlsReceived) {
-    return <div>waiting on data</div>;
+    return <div className="loading">Loading...</div>;
   } else {
     // Trying to figure out how/when to call the API.....
     // If I call the API in each card we won't be able to prevent duplicates

@@ -16,7 +16,8 @@ export default function Body() {
     <>
       <Scoreboard
       currentScore={currentScore}
-      topScore={topScore} />
+      topScore={topScore} 
+      urlsReceived={urlsReceived}/>
       <Gameboard
       currentScore={currentScore}
       setCurrentScore={setCurrentScore}

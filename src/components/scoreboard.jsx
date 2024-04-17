@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
-function Scoreboard({currentScore, topScore}) {
-
+function Scoreboard({currentScore, topScore, urlsReceived}) {
+if (!urlsReceived){
+    return null;
+}
 return (
     <section className="scoreboard">
         <div className="scoreContainer currentScore">
