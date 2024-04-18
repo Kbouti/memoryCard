@@ -10,7 +10,7 @@ return (
             <label>Current Score: {currentScore}</label>
         </div>
         <div className="scoreContainer topScore">
-            <label>Current Score: {topScore}</label>
+            <label>Top Score: {topScore}</label>
         </div>
     </section>
 
