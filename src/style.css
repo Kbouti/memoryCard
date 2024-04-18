@@ -40,6 +40,14 @@ h1 {
   padding: 1rem;
 }
 
+.winner {
+  border-color:rgb(39, 168, 39);
+}
+
+.loser {
+  border-color:red;
+}
+
 .scoreboard label {
   background-color:#80BCEA;
   font-weight: 650;

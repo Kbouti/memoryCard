@@ -39,8 +39,6 @@ function Gameboard({
               // ************************************************************************************************************************
               // Lose conditions
               // ************************************************************************************************************************
-              alert(`Game Over!`);
-              console.log(`game over!`);
               setGameOver(true);
               return;
             }
@@ -48,9 +46,8 @@ function Gameboard({
               // ************************************************************************************************************************
               // Win conditions
               // ************************************************************************************************************************
-              alert(`You win!`);
-              console.log(`You win!`);
               setGameOver(true);
+              setCurrentScore(12);
               return;
             }
           }
@@ -75,8 +72,8 @@ function Gameboard({
   // Siiiiiiick, we're making serious progress.
   // We've rendered cards and we're incrementing currentScore on each click.
 
-  // Ok, we're pretty much there! 
-//   We basically just need to shuffle the dom and create the option to play multiple rounds of the game.
+  // Ok, we're pretty much there!
+  // We basically just need to shuffle the dom and create the option to play multiple rounds of the game.
   // ************************************************************************************
 
   return (

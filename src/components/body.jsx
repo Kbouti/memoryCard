@@ -43,6 +43,7 @@ export default function Body() {
           currentScore={currentScore}
           topScore={topScore}
           urlsReceived={urlsReceived}
+          gameOver={gameOver}
         />
         <Gameboard
           currentScore={currentScore}
