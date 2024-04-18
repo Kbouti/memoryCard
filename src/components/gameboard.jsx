@@ -15,11 +15,14 @@ function Gameboard({
   playerGuesses,
   setPlayerGuesses,
 }) {
-  function Card({ index, url, currentScore, setCurrentScore, playerGuesses, setPlayerGuesses }) {
-
-
-
-
+  function Card({
+    index,
+    url,
+    currentScore,
+    setCurrentScore,
+    playerGuesses,
+    setPlayerGuesses,
+  }) {
     return (
       <div
         onClick={() => {
@@ -29,29 +32,36 @@ function Gameboard({
           }
           console.log(`playerGuesses: ${playerGuesses}`);
           let newArray = [];
-          for (let i = 0;i<playerGuesses.length;i++){
+          for (let i = 0; i < playerGuesses.length; i++) {
             newArray.push(playerGuesses[i]);
-            console.log(newArray)
-            if (playerGuesses[i] === index){
-                setGameOver(true)
-                console.log(`game over!`);
-                alert(`Game Over!`)
-                return;
+            console.log(newArray);
+            if (playerGuesses[i] === index) {
+              // ************************************************************************************************************************
+              // Lose conditions
+              // ************************************************************************************************************************
+              alert(`Game Over!`);
+              console.log(`game over!`);
+              setGameOver(true);
+              return;
+            }
+            if (playerGuesses.length === 11) {
+              // ************************************************************************************************************************
+              // Win conditions
+              // ************************************************************************************************************************
+              alert(`You win!`);
+              console.log(`You win!`);
+              setGameOver(true);
+              return;
             }
           }
 
-          if (topScore < currentScore + 1){
+          if (topScore < currentScore + 1) {
             setTopScore(currentScore + 1);
           }
           newArray.push(index);
-
-          console.log(`after loop array: ${newArray}`);
           setPlayerGuesses(newArray);
-          
           console.log(`card ${index} clicked`);
           console.log(`clicked cards so far: ${newArray}`);
-          // If this index exists in playerGuesses >> gameover, player loses.
-
           setCurrentScore(currentScore + 1);
         }}
         className="card"
@@ -65,10 +75,8 @@ function Gameboard({
   // Siiiiiiick, we're making serious progress.
   // We've rendered cards and we're incrementing currentScore on each click.
 
-  // In order to play the game we'll need a state variable that keeps track of the clicked indexes.
-  // If index exists in array, gameover (Maybe gotta make that a state variable as well)
-  // If not, if currentScore > topScore, setTopScore(currentScore)
-  // And of course...... ShuffleDom()
+  // Ok, we're pretty much there! 
+//   We basically just need to shuffle the dom and create the option to play multiple rounds of the game.
   // ************************************************************************************
 
   return (
