@@ -10,12 +10,23 @@ function Gameboard({
   setUrlsReceived,
   urlList,
   setUrlList,
+  gameOver,
+  setGameOver,
+  playerGuesses,
+  setPlayerGuesses,
 }) {
   function Card({ index, url, currentScore, setCurrentScore }) {
     return (
       <div
         onClick={() => {
+          if (gameOver) {
+            alert(`game is over!`);
+            return;
+          }
           console.log(`card ${index} clicked`);
+          console.log(`clicked cards so far: ${playerGuesses}`);
+          // If this index exists in playerGuesses >> gameover, player loses.
+
           setCurrentScore(currentScore + 1);
         }}
         className="card"
@@ -28,7 +39,11 @@ function Gameboard({
   // ************************************************************************************
   // Siiiiiiick, we're making serious progress.
   // We've rendered cards and we're incrementing currentScore on each click.
-  // Next we need to handle topScore, and finally......Rearranging the gameCards
+
+  // In order to play the game we'll need a state variable that keeps track of the clicked indexes.
+  // If index exists in array, gameover (Maybe gotta make that a state variable as well)
+  // If not, if currentScore > topScore, setTopScore(currentScore)
+  // And of course...... ShuffleDom()
   // ************************************************************************************
 
   return (

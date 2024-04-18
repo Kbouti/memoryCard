@@ -9,6 +9,8 @@ export default function Body() {
   const [topScore, setTopScore] = useState(0);
   const [urlsReceived, setUrlsReceived] = useState(false);
   const [urlList, setUrlList] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
+  const [playerGuesses, setPlayerGuesses] = useState([]);
 
   let newArray = [];
 
@@ -51,6 +53,10 @@ export default function Body() {
           setUrlsReceived={setUrlsReceived}
           urlList={urlList}
           setUrlList={setUrlList}
+          gameOver={gameOver}
+          setGameOver={setGameOver}
+          playerGuesses={playerGuesses}
+          setPlayerGuesses={setPlayerGuesses}
         />
       </>
     );
