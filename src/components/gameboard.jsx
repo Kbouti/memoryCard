@@ -8,69 +8,43 @@ function Gameboard({
   setTopScore,
   urlsReceived,
   setUrlsReceived,
+  urlList,
+  setUrlList,
 }) {
-  function Card({ index }) {
+  function Card({ index, url }) {
     useEffect(() => {
       // Fetch url from API
     });
     return (
       <div className="card">
-        <p>{index}</p>
+        <img src={url}></img>
+        {/* <p>{index}</p> */}
       </div>
     );
   }
-  if (!urlsReceived) {
-    console.log(`urlsReceived is false`);
 
-    let newArray = [];
+  // ************************************************************************************
+  // I think we FINALLY made progress!!!!!
+  // When this runs we're already gotten our urlList. Right??
+  console.log(`urlLIst: ${urlList}`);
+  // ************************************************************************************
 
-    // ************************************************************************************
-    // We're calling this conditionally and that's not allowed.
-    // WTF do I do if I can't call this conditionally????
-    // ************************************************************************************
-    useEffect((urlList, setUrlList, urlsReceived, setUrlsReceived) => {
-      async function fetchData() {
-        while (newArray.length < 12) {
-          const result = await fetch("https://random.dog/woof.json");
-          result.json().then((json) => {
-            const string = json.url.toString();
-            let last3 = string.substr(string.length - 3);
-            last3 = last3.toLowerCase();
-            if (last3 == "jpg") {
-              newArray.push(json.url);
-              console.log(
-                `added a suitable url. New length: ${newArray.length}`
-              );
-            }
-          });
-        }
-        console.log(`newArray length: ${newArray.length}`);
-        return newArray;
-      }
-      fetchData();
-    });
-
-    console.log(`This statement logs before newArray has filled with data`);
-
-    return <div className="loading">Loading...</div>;
-  } else {
-    console.log(`urlsReceived is true`);
-    return (
-      <div className="gameboard">
-        <Card index="1" />
-        <Card index="2" />
-        <Card index="3" />
-        <Card index="4" />
-        <Card index="5" />
-        <Card index="6" />
-        <Card index="7" />
-        <Card index="8" />
-        <Card index="9" />
-        <Card index="10" />
-        <Card index="11" />
-        <Card index="12" />
-      </div>
-    );
-  }
+  return (
+    <div className="gameboard">
+      <Card index="1" url = {urlList[0]}/>
+      <Card index="2" url = {urlList[1]}/>
+      <Card index="3" url = {urlList[2]}/>
+      <Card index="4" url = {urlList[3]}/>
+      <Card index="5" url = {urlList[4]}/>
+      <Card index="6" url = {urlList[5]}/>
+      <Card index="7" url = {urlList[6]}/>
+      <Card index="8" url = {urlList[7]}/>
+      <Card index="9" url = {urlList[8]}/>
+      <Card index="10" url = {urlList[9]}/>
+      <Card index="11" url = {urlList[10]}/>
+      <Card index="12" url = {urlList[11]}/>
+    </div>
+  );
 }
+
 export default Gameboard;
