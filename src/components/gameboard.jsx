@@ -11,37 +11,100 @@ function Gameboard({
   urlList,
   setUrlList,
 }) {
-  function Card({ index, url }) {
-    useEffect(() => {
-      // Fetch url from API
-    });
+  function Card({ index, url, currentScore, setCurrentScore }) {
     return (
-      <div className="card">
+      <div
+        onClick={() => {
+          console.log(`card ${index} clicked`);
+          setCurrentScore(currentScore + 1);
+        }}
+        className="card"
+      >
         <img src={url}></img>
       </div>
     );
   }
 
   // ************************************************************************************
-  // I think we FINALLY made progress!!!!!
-  // When this runs we're already gotten our urlList. Right??
-  console.log(`urlLIst: ${urlList}`);
+  // Siiiiiiick, we're making serious progress.
+  // We've rendered cards and we're incrementing currentScore on each click.
+  // Next we need to handle topScore, and finally......Rearranging the gameCards
   // ************************************************************************************
 
   return (
     <div className="gameboard">
-      <Card index="1" url = {urlList[0]}/>
-      <Card index="2" url = {urlList[1]}/>
-      <Card index="3" url = {urlList[2]}/>
-      <Card index="4" url = {urlList[3]}/>
-      <Card index="5" url = {urlList[4]}/>
-      <Card index="6" url = {urlList[5]}/>
-      <Card index="7" url = {urlList[6]}/>
-      <Card index="8" url = {urlList[7]}/>
-      <Card index="9" url = {urlList[8]}/>
-      <Card index="10" url = {urlList[9]}/>
-      <Card index="11" url = {urlList[10]}/>
-      <Card index="12" url = {urlList[11]}/>
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="1"
+        url={urlList[0]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="2"
+        url={urlList[1]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="3"
+        url={urlList[2]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="4"
+        url={urlList[3]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="5"
+        url={urlList[4]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="6"
+        url={urlList[5]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="7"
+        url={urlList[6]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="8"
+        url={urlList[7]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="9"
+        url={urlList[8]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="10"
+        url={urlList[9]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="11"
+        url={urlList[10]}
+      />
+      <Card
+        currentScore={currentScore}
+        setCurrentScore={setCurrentScore}
+        index="12"
+        url={urlList[11]}
+      />
     </div>
   );
 }

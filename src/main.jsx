@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import MainPage from "./components/master.jsx";
+import "./style.css";
 
 import Header from "./components/header.jsx";
 import Body from "./components/body.jsx";
