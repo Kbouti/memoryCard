@@ -51,7 +51,7 @@ function Gameboard({
               return;
             }
           }
-
+          shuffleCards();
           if (topScore < currentScore + 1) {
             setTopScore(currentScore + 1);
           }
@@ -67,6 +67,22 @@ function Gameboard({
       </div>
     );
   }
+
+
+
+  function shuffleCards() {
+    console.log(`shuffleCards function called`);
+    // Ok here's where we gotta shuffle the cards.....
+    const gameboard = document.getElementsByClassName("gameboard")[0];
+    const children = gameboard.childNodes;
+    console.log(`shuffle shuffle. gamechildren length: ${children.length}`);
+    for (let i = 0;i<12;i++){
+        gameboard.appendChild(children[Math.random() * i ])
+        // This MAYBE KINDA WORKED??
+    }
+
+  }
+
 
   // ************************************************************************************
   // Siiiiiiick, we're making serious progress.
