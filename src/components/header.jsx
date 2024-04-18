@@ -7,7 +7,7 @@ function Header() {
   return (
     <>
       <h1>Memory Card</h1>
-      <h2>Test your memory with all the cute doggo pics</h2>
+      <h2>Test your memory with cute doggo pics</h2>
     </>
   );
 }
