@@ -79,9 +79,12 @@ function Gameboard({
     console.log(`shuffle shuffle. gamechildren length: ${children.length}`);
     for (let i = 0; i < 12; i++) {
       // ************************************************************************************
-      // The following line is triggering an error. If says:
-      // Node.appendChild: argument 1 is not an object
-      gameboard.appendChild(children[Math.random() * i]);
+      // Ok we're not getting an error anymore, and in theory this is doing what we want....
+      //   But it doesn't work. Maybe it does reorder but then it sorts them again?
+      // How do I access the key? Maybe we need to use key instead of index?
+      const randomIndex = Math.floor(Math.random() * i);
+      console.log(`index of child we're appending: ${randomIndex}`);
+      gameboard.appendChild(children[randomIndex]);
       // ************************************************************************************
     }
   }

@@ -24,11 +24,11 @@ export default function Body() {
           last3 = last3.toLowerCase();
           if (last3 == "jpg") {
             newArray.push(json.url);
-            console.log(`added a suitable url. New length: ${newArray.length}`);
+            // console.log(`added a suitable url. New length: ${newArray.length}`);
           }
         });
       }
-      console.log(`newArray length: ${newArray.length}`);
+      console.log(`URL array complete. Length: ${newArray.length}`);
       setUrlList(newArray);
       setUrlsReceived(true);
       return newArray;
