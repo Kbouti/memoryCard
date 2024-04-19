@@ -34,7 +34,7 @@ function Gameboard({
           let newArray = [];
           for (let i = 0; i < playerGuesses.length; i++) {
             newArray.push(playerGuesses[i]);
-            console.log(newArray);
+            // console.log(newArray);
             if (playerGuesses[i] === index) {
               // ************************************************************************************************************************
               // Lose conditions
@@ -51,10 +51,10 @@ function Gameboard({
               return;
             }
           }
-          shuffleCards();
           if (topScore < currentScore + 1) {
             setTopScore(currentScore + 1);
           }
+          shuffleCards();
           newArray.push(index);
           setPlayerGuesses(newArray);
           console.log(`card ${index} clicked`);
@@ -68,21 +68,23 @@ function Gameboard({
     );
   }
 
-
-
   function shuffleCards() {
     console.log(`shuffleCards function called`);
     // Ok here's where we gotta shuffle the cards.....
     const gameboard = document.getElementsByClassName("gameboard")[0];
     const children = gameboard.childNodes;
+    console.log(`gameboard: ${gameboard}`);
+    console.log(`children: ${children}`);
+    console.log(`children[0]: ${children[0]}`);
     console.log(`shuffle shuffle. gamechildren length: ${children.length}`);
-    for (let i = 0;i<12;i++){
-        gameboard.appendChild(children[Math.random() * i ])
-        // This MAYBE KINDA WORKED??
+    for (let i = 0; i < 12; i++) {
+      // ************************************************************************************
+      // The following line is triggering an error. If says:
+      // Node.appendChild: argument 1 is not an object
+      gameboard.appendChild(children[Math.random() * i]);
+      // ************************************************************************************
     }
-
   }
-
 
   // ************************************************************************************
   // Siiiiiiick, we're making serious progress.
@@ -90,6 +92,7 @@ function Gameboard({
 
   // Ok, we're pretty much there!
   // We basically just need to shuffle the dom and create the option to play multiple rounds of the game.
+  //   And make sure our urlList doesn't include any duplicates
   // ************************************************************************************
 
   return (
