@@ -65,3 +65,7 @@ export default function Body() {
     return <div className="loading">Loading...</div>;
   }
 }
+
+
+// Add spinning affect on loading?
+// Maybe set timeout and alter inner html . .. ...
