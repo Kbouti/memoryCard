@@ -12,8 +12,22 @@ export default function Body() {
   const [gameOver, setGameOver] = useState(false);
   const [playerGuesses, setPlayerGuesses] = useState([]);
 
-  let newArray = [];
+  const loading = ["Loading.", "Loading..", "Loading..."];
+  const [loadingMessage, setLoadingMessage] = useState(loading[0]);
+  function changeLoading() {
+    for (let i = 0; i < loading.length; i++) {
+      if (loading[i] == loadingMessage) {
+        if (loadingMessage == loading[2]) {
+          setLoadingMessage(loading[0]);
+        } else {
+          setLoadingMessage(loading[i + 1]);
+        }
+      }
+    }
+    setTimeout(changeLoading, 500);
+  }
 
+  let newArray = [];
   useEffect(() => {
     async function fetchData() {
       while (newArray.length < 12) {
@@ -62,10 +76,7 @@ export default function Body() {
       </>
     );
   } else {
-    return <div className="loading">Loading...</div>;
+    setTimeout(changeLoading, 500);
+    return <div className="loading">{loadingMessage}</div>;
   }
 }
-
-
-// Add spinning affect on loading?
-// Maybe set timeout and alter inner html . .. ...
