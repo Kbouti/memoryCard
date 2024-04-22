@@ -70,18 +70,25 @@ function Gameboard({
 
   function shuffleCards() {
     console.log(`shuffleCards function called`);
-    // Ok here's where we gotta shuffle the cards.....
     const gameboard = document.getElementsByClassName("gameboard")[0];
-    const children = gameboard.childNodes;
-    console.log(`gameboard: ${gameboard}`);
-    console.log(`children: ${children}`);
-    console.log(`children[0]: ${children[0]}`);
-    console.log(`shuffle shuffle. gamechildren length: ${children.length}`);
+    // const children = gameboard.children;
+    const children = gameboard.getElementsByClassName("card");
+    // console.log(`gameboard: ${gameboard}`);
+    // console.log(`children: ${children}`);
+    // console.log(`children[0]: ${children[0]}`);
+    // console.log(`children[0].index: ${children[0].index}`);
+    // console.log(`shuffle shuffle. gamechildren length: ${children.length}`);
     for (let i = 0; i < 12; i++) {
       // ************************************************************************************
       // Ok we're not getting an error anymore, and in theory this is doing what we want....
       //   But it doesn't work. Maybe it does reorder but then it sorts them again?
       // How do I access the key? Maybe we need to use key instead of index?
+
+      // I'm trying to remove each node just fer shits n gigs and now I'm getting an error that says "Node.removeChild: The node to be removed is not a child of this node"
+      // What dafuq's up with that? I don't know but we should probably investigate it.
+
+gameboard.removeChild(children[0]);
+
       const randomIndex = Math.floor(Math.random() * i);
       console.log(`index of child we're appending: ${randomIndex}`);
       gameboard.appendChild(children[randomIndex]);
@@ -90,10 +97,6 @@ function Gameboard({
   }
 
   // ************************************************************************************
-  // Siiiiiiick, we're making serious progress.
-  // We've rendered cards and we're incrementing currentScore on each click.
-
-  // Ok, we're pretty much there!
   // We basically just need to shuffle the dom and create the option to play multiple rounds of the game.
   //   And make sure our urlList doesn't include any duplicates
   // ************************************************************************************
