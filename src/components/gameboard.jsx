@@ -83,24 +83,14 @@ function Gameboard({
   // ************************************************************************************
   // ************************************************************************************
 
-  // console.log(`We're here in gameboard`)
-  // let cards = [];
-  // for (let i = 0;i<urlList.length;i++){
-  //   cards.push({url:urlList[i],
-  //   index: i});
-  // }
-
-  // We can't write ^this code^ here because it will run every time the component mounts and unmounts. We need to write it in the useEffect hook
-
   // So below we're hard-coding N cards and giving them each a URL from our list, as well as an index.
-  // Instead, we need to establish an array of card objects in a state variable "cards"
-  // We'll pass "cards" to gameboard, but it doesn't otherwise need the urlList I don't think? Except to maybe start a new game? Cross that bridge when we get to it
-  // We need to raise state. state, We establish the card objects which can keep track of a url and  "clicked?" boolean
+  // The next step is to refactor from using urlList to using the cards objects. We may need to refactor how we keep track of score. 
 
-  // ************************************************************************************
   // We basically just need to shuffle the dom and create the option to play multiple rounds of the game.
   //   And make sure our urlList doesn't include any duplicates
   // ************************************************************************************
+  // ************************************************************************************
+
 
   return (
     <div className="gameboard">
