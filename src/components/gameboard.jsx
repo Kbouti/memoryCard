@@ -70,20 +70,32 @@ function Gameboard({
 
   function shuffleCards() {
     console.log(`shuffleCards function called`);
-    const gameboard = document.getElementsByClassName("gameboard")[0];
-    const children = gameboard.getElementsByClassName("card");
-    const firstChild = children[0];
-    firstChild.classList.add("purple");
-    console.log(firstChild);
-    firstChild.remove();
-
-    // The console.log outputs a div element with classes "card" AND "purple"
-    // But when I inspect elements using devtools there are no elements with the class "purple"
-    // Is the component getting re-rendered and reset?
-    // It shouldn't be getting re-rendered because I'm not changing any state variables or anything like that?
-
-    // We're still getting a "the node to be removed is not a child of this node" --Even when we're not specifying it as a child I think some strange wizardry is happening to re-render the element
+    const newArray = [];
+    for (let i = 0; i < urlList.length; i++) {
+      newArray.push(urlList[i]);
+    }
+    for (let i = 0; i < newArray.length; i++) {
+      let randomNumber = Math.floor(Math.random() * urlList.length);
+      console.log(`randomNumber: ${randomNumber}`);
+    }
   }
+
+  // ************************************************************************************
+  // ************************************************************************************
+
+  // console.log(`We're here in gameboard`)
+  // let cards = [];
+  // for (let i = 0;i<urlList.length;i++){
+  //   cards.push({url:urlList[i],
+  //   index: i});
+  // }
+
+  // We can't write ^this code^ here because it will run every time the component mounts and unmounts. We need to write it in the useEffect hook
+
+  // So below we're hard-coding N cards and giving them each a URL from our list, as well as an index.
+  // Instead, we need to establish an array of card objects in a state variable "cards"
+  // We'll pass "cards" to gameboard, but it doesn't otherwise need the urlList I don't think? Except to maybe start a new game? Cross that bridge when we get to it
+  // We need to raise state. state, We establish the card objects which can keep track of a url and  "clicked?" boolean
 
   // ************************************************************************************
   // We basically just need to shuffle the dom and create the option to play multiple rounds of the game.
