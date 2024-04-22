@@ -71,29 +71,18 @@ function Gameboard({
   function shuffleCards() {
     console.log(`shuffleCards function called`);
     const gameboard = document.getElementsByClassName("gameboard")[0];
-    // const children = gameboard.children;
     const children = gameboard.getElementsByClassName("card");
-    // console.log(`gameboard: ${gameboard}`);
-    // console.log(`children: ${children}`);
-    // console.log(`children[0]: ${children[0]}`);
-    // console.log(`children[0].index: ${children[0].index}`);
-    // console.log(`shuffle shuffle. gamechildren length: ${children.length}`);
-    for (let i = 0; i < 12; i++) {
-      // ************************************************************************************
-      // Ok we're not getting an error anymore, and in theory this is doing what we want....
-      //   But it doesn't work. Maybe it does reorder but then it sorts them again?
-      // How do I access the key? Maybe we need to use key instead of index?
+    const firstChild = children[0];
+    firstChild.classList.add("purple");
+    console.log(firstChild);
+    firstChild.remove();
 
-      // I'm trying to remove each node just fer shits n gigs and now I'm getting an error that says "Node.removeChild: The node to be removed is not a child of this node"
-      // What dafuq's up with that? I don't know but we should probably investigate it.
+    // The console.log outputs a div element with classes "card" AND "purple"
+    // But when I inspect elements using devtools there are no elements with the class "purple"
+    // Is the component getting re-rendered and reset?
+    // It shouldn't be getting re-rendered because I'm not changing any state variables or anything like that?
 
-gameboard.removeChild(children[0]);
-
-      const randomIndex = Math.floor(Math.random() * i);
-      console.log(`index of child we're appending: ${randomIndex}`);
-      gameboard.appendChild(children[randomIndex]);
-      // ************************************************************************************
-    }
+    // We're still getting a "the node to be removed is not a child of this node" --Even when we're not specifying it as a child I think some strange wizardry is happening to re-render the element
   }
 
   // ************************************************************************************

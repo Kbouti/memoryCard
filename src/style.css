@@ -95,3 +95,9 @@ border-radius:10%;
   max-height: 15rem;
   border-radius:2%;
 }
+
+.purple {
+  color:purple;
+  background-color:purple;
+  border: 2px solid purple;
+}
