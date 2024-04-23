@@ -43,6 +43,8 @@ function Gameboard({
             console.log(
               `card hasn't been clicked. gamecard.selected: ${gamecard.selected}`
             );
+
+            // Set selected to true, shuffle, and rerender
             // Now we need to change it to clicked and shuffle the deck
             // Also check for win conditions?
             // But currently our card divs aren't being rendererd at all. Look down at our map call to figure that out
