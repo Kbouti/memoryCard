@@ -90,6 +90,7 @@ export default function Body() {
           setGameOver={setGameOver}
           playerGuesses={playerGuesses}
           setPlayerGuesses={setPlayerGuesses}
+          gameCards={gameCards}
         />
       </>
     );

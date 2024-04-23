@@ -14,10 +14,14 @@ function Gameboard({
   setGameOver,
   playerGuesses,
   setPlayerGuesses,
+  gameCards,
+  setGameCards,
 }) {
   function Card({
+    gamecard,
     index,
     url,
+    selected,
     currentScore,
     setCurrentScore,
     playerGuesses,
@@ -30,22 +34,36 @@ function Gameboard({
             alert(`The game is already over, stop clicking`);
             return;
           }
+
+          if (gamecard.selected) {
+            console.log(
+              `Card already clicked. gamecard.selected: ${gamecard.selected}`
+            );
+          } else {
+            console.log(
+              `card hasn't been clicked. gamecard.selected: ${gamecard.selected}`
+            );
+            // Now we need to change it to clicked and shuffle the deck
+            // Also check for win conditions?
+            // But currently our card divs aren't being rendererd at all. Look down at our map call to figure that out
+          }
+          // Above here ^^ is the refactor in progress
+          // ************************************************************************************************************************
+          // ************************************************************************************************************************
+          // Everything below this is old code not yet refactored.
+
           console.log(`playerGuesses: ${playerGuesses}`);
           let newArray = [];
           for (let i = 0; i < playerGuesses.length; i++) {
             newArray.push(playerGuesses[i]);
-            // console.log(newArray);
+            // This loops through the past guess to see if the clicked node is on the list. We will be able to remove this when using the card object with selected property.
             if (playerGuesses[i] === index) {
-              // ************************************************************************************************************************
               // Lose conditions
-              // ************************************************************************************************************************
               setGameOver(true);
               return;
             }
             if (playerGuesses.length === 11) {
-              // ************************************************************************************************************************
               // Win conditions
-              // ************************************************************************************************************************
               setGameOver(true);
               setCurrentScore(12);
               return;
@@ -63,7 +81,7 @@ function Gameboard({
         }}
         className="card"
       >
-        <img src={url}></img>
+        <img src={gamecard.url}></img>
       </div>
     );
   }
@@ -83,113 +101,18 @@ function Gameboard({
   // ************************************************************************************
   // ************************************************************************************
 
-  // So below we're hard-coding N cards and giving them each a URL from our list, as well as an index.
-  // The next step is to refactor from using urlList to using the cards objects. We may need to refactor how we keep track of score. 
+  // COOL! Now we're mapping over each of our card objects and making an element, using the card object info and a key.
 
-  // We basically just need to shuffle the dom and create the option to play multiple rounds of the game.
-  //   And make sure our urlList doesn't include any duplicates
+  // Next step finish our click handlers for the cards. Then shuffle. Then multiple rounds. And make sure no duplicate URLs
+
   // ************************************************************************************
   // ************************************************************************************
-
 
   return (
     <div className="gameboard">
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="1"
-        url={urlList[0]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="2"
-        url={urlList[1]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="3"
-        url={urlList[2]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="4"
-        url={urlList[3]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="5"
-        url={urlList[4]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="6"
-        url={urlList[5]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="7"
-        url={urlList[6]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="8"
-        url={urlList[7]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="9"
-        url={urlList[8]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="10"
-        url={urlList[9]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="11"
-        url={urlList[10]}
-      />
-      <Card
-        currentScore={currentScore}
-        setCurrentScore={setCurrentScore}
-        playerGuesses={playerGuesses}
-        setPlayerGuesses={setPlayerGuesses}
-        index="12"
-        url={urlList[11]}
-      />
+      {gameCards.map((card) => {
+        return <Card gamecard={card} key={card.index} />;
+      })}
     </div>
   );
 }
