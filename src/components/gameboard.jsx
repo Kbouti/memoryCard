@@ -39,47 +39,25 @@ function Gameboard({
             console.log(
               `Card already clicked. gamecard.selected: ${gamecard.selected}`
             );
+            console.log(`You lose, round over`);
+            setGameOver(true);
+            return;
           } else {
             console.log(
               `card hasn't been clicked. gamecard.selected: ${gamecard.selected}`
             );
+            console.log(`gamecard.index: ${gamecard.index}`);
+            // We need to set the card to clicked. 
+            // To do that, We need to establish a NEW array of gamecard objects that is the same but with this card selected:true
+            // THEN shufflecards, set new score. 
 
-            // Set selected to true, shuffle, and rerender
-            // Now we need to change it to clicked and shuffle the deck
-            // Also check for win conditions?
-            // But currently our card divs aren't being rendererd at all. Look down at our map call to figure that out
+            // shuffleCards();
+            // setCurrentScore(currentScore + 1);
+            // if (topScore < currentScore + 1) {
+            //   setTopScore(currentScore + 1);
+            // }
           }
-          // Above here ^^ is the refactor in progress
-          // ************************************************************************************************************************
-          // ************************************************************************************************************************
-          // Everything below this is old code not yet refactored.
 
-          console.log(`playerGuesses: ${playerGuesses}`);
-          let newArray = [];
-          for (let i = 0; i < playerGuesses.length; i++) {
-            newArray.push(playerGuesses[i]);
-            // This loops through the past guess to see if the clicked node is on the list. We will be able to remove this when using the card object with selected property.
-            if (playerGuesses[i] === index) {
-              // Lose conditions
-              setGameOver(true);
-              return;
-            }
-            if (playerGuesses.length === 11) {
-              // Win conditions
-              setGameOver(true);
-              setCurrentScore(12);
-              return;
-            }
-          }
-          if (topScore < currentScore + 1) {
-            setTopScore(currentScore + 1);
-          }
-          shuffleCards();
-          newArray.push(index);
-          setPlayerGuesses(newArray);
-          console.log(`card ${index} clicked`);
-          console.log(`clicked cards so far: ${newArray}`);
-          setCurrentScore(currentScore + 1);
         }}
         className="card"
       >
