@@ -61,7 +61,7 @@ function Gameboard({
             }
 // Ok Now we've accessed the list of gamecard objects. Next we need to find the matching index, change selected to true,  and set state again
 
-// MOAB
+// Moab II
 
 
             // We need to set the card to clicked. 
