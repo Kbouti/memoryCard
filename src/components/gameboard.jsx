@@ -47,9 +47,7 @@ function Gameboard({
               `card hasn't been clicked. gamecard.selected: ${gamecard.selected}`
             );
             console.log(`gamecard.index: ${gamecard.index}`);
-
             console.log(`gameCards: ${gameCards}`)
-
             let targetCard;
             for (let i = 0;i < gameCards.length;i++){
               console.log(`gamecards iteration ${i}`);
@@ -99,7 +97,6 @@ function Gameboard({
   // ************************************************************************************
 
   // COOL! Now we're mapping over each of our card objects and making an element, using the card object info and a key.
-
   // Next step finish our click handlers for the cards. Then shuffle. Then multiple rounds. And make sure no duplicate URLs
 
   // ************************************************************************************
