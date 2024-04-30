@@ -53,17 +53,21 @@ function Gameboard({
               console.log(`gamecards iteration ${i}`);
               if (gameCards[i].index == gamecard.index){
                 console.log(`found it!`)
-// This worked! So now we've found the card. We need to set selected to true, then create a new array of all our objects(with one changed), then set state again
-                // targetCard = gameCards[i];
+                console.log(`The clicked index is ${i}`)
+                let newGamecards = [];
+                for (let j = 0;j < gameCards.length;j++){
+                  if (
+                    // if this gamecard is not the one that is selected, create a copy and push it to newGamecards
+                    gameCards[j].index !== i
+                  ){
+                    console.log(`pushing an unaltered copy of this gamecard`);
+                  } else {
+                    console.log(`This is the card we need to change to selected`)
+                  }
+                }
+
               }
             }
-// Ok Now we've accessed the list of gamecard objects. Next we need to find the matching index, change selected to true,  and set state again
-// We can do this with a loop!
-// Create a new array
-// loop through old list, if index doesnt match, push to list. If match, adjust selected
-
-            // We need to set the card to clicked. 
-            // To do that, We need to establish a NEW array of gamecard objects that is the same but with this card selected:true
             // THEN shufflecards, set new score. 
 
             // shuffleCards();
