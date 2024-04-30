@@ -64,6 +64,8 @@ function Gameboard({
                       index: gameCards[j].index,
                       selected: gameCards[j].selected,
                     }
+                    console.log(newCard)
+
                     newGamecards.push(newCard);
                   } else {
 // We're changing this card selected to true because it's the one the useer clicked
@@ -72,9 +74,28 @@ function Gameboard({
                       index: gameCards[j].index,
                       selected: true,
                     }
+                    console.log(newCard)
                     newGamecards.push(newCard);
                   }
                 }
+
+
+// for (let k = 0;k < newGamecards.length;k++){
+
+// let randomIndex = Math.floor(Math.random() * newGamecards.length)
+// console.log(`randomIndex: ${randomIndex}`);
+// // ^^This works to get random number 0-11
+
+
+//   let randomCard = newGamecards.splice(randomIndex, 1);
+//   console.log(`randomCard: ${randomCard}`)
+
+//   console.log(`randomCard.index: ${randomCard.index}`)
+//   console.log(`randomCard.selected: ${randomCard.selected}`)
+//   newGamecards.push(randomCard);
+// }
+
+// All we need to do is randomize the order of newGamecards before calling the setFunction
                 setGameCards(newGamecards);
 
 // Boom! We're keeping track of what cards have been clicked. But we still need to shuffle the div elements..... ??
