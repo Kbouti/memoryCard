@@ -10,7 +10,6 @@ export default function Body() {
   const [urlsReceived, setUrlsReceived] = useState(false);
   const [urlList, setUrlList] = useState([]);
   const [gameOver, setGameOver] = useState(false);
-  const [playerGuesses, setPlayerGuesses] = useState([]);
 
   //  *************************************************************************************
   // New state variables:
@@ -88,8 +87,6 @@ export default function Body() {
           setUrlList={setUrlList}
           gameOver={gameOver}
           setGameOver={setGameOver}
-          playerGuesses={playerGuesses}
-          setPlayerGuesses={setPlayerGuesses}
           gameCards={gameCards}
           setGameCards={setGameCards}
         />
