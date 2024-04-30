@@ -41,7 +41,7 @@ export default function Body() {
           const string = json.url.toString();
           let last3 = string.substr(string.length - 3);
           last3 = last3.toLowerCase();
-          if (last3 == "jpg") {
+          if (last3 == "jpg" && newArray.length < 12) {
             newArray.push(json.url);
             // console.log(`added a suitable url. New length: ${newArray.length}`);
           }
