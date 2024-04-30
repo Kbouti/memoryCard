@@ -22,8 +22,8 @@ function Gameboard({
     index,
     url,
     selected,
-    currentScore,
-    setCurrentScore,
+    // currentScore,
+    // setCurrentScore,
     playerGuesses,
     setPlayerGuesses,
     // gameCards,
@@ -112,10 +112,10 @@ function Gameboard({
             // THEN shufflecards, set new score. 
 
             // shuffleCards();
-            // setCurrentScore(currentScore + 1);
-            // if (topScore < currentScore + 1) {
-            //   setTopScore(currentScore + 1);
-            // }
+            setCurrentScore(currentScore + 1);
+            if (topScore < currentScore + 1) {
+              setTopScore(currentScore + 1);
+            }
           }
 
         }}
