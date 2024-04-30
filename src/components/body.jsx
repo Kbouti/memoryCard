@@ -91,6 +91,7 @@ export default function Body() {
           playerGuesses={playerGuesses}
           setPlayerGuesses={setPlayerGuesses}
           gameCards={gameCards}
+          setGameCards={setGameCards}
         />
       </>
     );

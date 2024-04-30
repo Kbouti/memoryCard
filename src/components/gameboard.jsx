@@ -26,6 +26,9 @@ function Gameboard({
     setCurrentScore,
     playerGuesses,
     setPlayerGuesses,
+    // gameCards,
+    // setGameCards,
+  
   }) {
     return (
       <div
@@ -34,7 +37,6 @@ function Gameboard({
             alert(`The game is already over, stop clicking`);
             return;
           }
-
           if (gamecard.selected) {
             console.log(
               `Card already clicked. gamecard.selected: ${gamecard.selected}`
@@ -44,13 +46,10 @@ function Gameboard({
             return;
           } else {
             console.log(
-              `card hasn't been clicked. gamecard.selected: ${gamecard.selected}`
+              `card ${gamecard.index} hasn't been clicked. gamecard.selected: ${gamecard.selected}`
             );
-            console.log(`gamecard.index: ${gamecard.index}`);
-            console.log(`gameCards: ${gameCards}`)
             let targetCard;
             for (let i = 0;i < gameCards.length;i++){
-              console.log(`gamecards iteration ${i}`);
               if (gameCards[i].index == gamecard.index){
                 console.log(`found it!`)
                 console.log(`The clicked index is ${i}`)
@@ -60,11 +59,25 @@ function Gameboard({
                     // if this gamecard is not the one that is selected, create a copy and push it to newGamecards
                     gameCards[j].index !== i
                   ){
-                    console.log(`pushing an unaltered copy of this gamecard`);
+                    const newCard = {
+                      url: gameCards[j].url,
+                      index: gameCards[j].index,
+                      selected: gameCards[j].selected,
+                    }
+                    newGamecards.push(newCard);
                   } else {
-                    console.log(`This is the card we need to change to selected`)
+// We're changing this card selected to true because it's the one the useer clicked
+                    const newCard = {
+                      url: gameCards[j].url,
+                      index: gameCards[j].index,
+                      selected: true,
+                    }
+                    newGamecards.push(newCard);
                   }
                 }
+                setGameCards(newGamecards);
+
+// Boom! We're keeping track of what cards have been clicked. But we still need to shuffle the div elements..... ??
 
 // ************************************************************************************************************
 // Things to look up: 
