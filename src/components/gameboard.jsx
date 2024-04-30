@@ -66,6 +66,13 @@ function Gameboard({
                   }
                 }
 
+// ************************************************************************************************************
+// Things to look up: 
+// How to copy an array or object with only one property changed
+// What to do when you've got too many nested for/if loops... Looks like a christmas tree
+// ************************************************************************************************************
+
+
               }
             }
             // THEN shufflecards, set new score. 
