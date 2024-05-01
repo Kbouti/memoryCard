@@ -43,15 +43,17 @@ function Gameboard({
             console.log(
               `card ${gamecard.index} has not been clicked. gamecard.selected: ${gamecard.selected}`
             );
+            let targetIndex = gamecard.index;
             let targetCard;
             for (let i = 0; i < gameCards.length; i++) {
-              if (gameCards[i].index == gamecard.index) {
-                console.log(`found it! The clicked index is ${i}`);
+              // Loop through all gamecards, find the one that was clicked:
+              if (gameCards[i].index == targetIndex) {
+                console.log(`found it! The clicked index is ${gameCards[i].index}`);
                 let newGamecards = [];
                 for (let j = 0; j < gameCards.length; j++) {
                   if (
                     // if this gamecard is not the one that is selected, create a copy and push it to newGamecards
-                    gameCards[j].index !== i
+                    gameCards[j].index !== gameCards[i].index
                   ) {
                     const newCard = {
                       url: gameCards[j].url,
@@ -60,13 +62,12 @@ function Gameboard({
                     };
                     newGamecards.push(newCard);
                   } else {
-                    // We're changing this card selected to true because it's the one the useer clicked
+                    // We're changing this card selected to true because it's the one the user clicked
                     const newCard = {
                       url: gameCards[j].url,
                       index: gameCards[j].index,
                       selected: true,
                     };
-                    // console.log(newCard);
                     newGamecards.push(newCard);
                   }
                 }
@@ -94,20 +95,6 @@ function Gameboard({
     );
   }
 
-  function shuffleCards() {
-    console.log(`shuffleCards function called`);
-
-// We never actually use this function, we just have the logic in the click listener
-
-    const newArray = [];
-    for (let i = 0; i < urlList.length; i++) {
-      newArray.push(urlList[i]);
-    }
-    for (let i = 0; i < newArray.length; i++) {
-      let randomNumber = Math.floor(Math.random() * urlList.length);
-      console.log(`randomNumber: ${randomNumber}`);
-    }
-  }
 
   return (
     <div className="gameboard">
