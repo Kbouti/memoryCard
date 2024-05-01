@@ -34,14 +34,14 @@ function Gameboard({
           }
           if (gamecard.selected) {
             console.log(
-              `Card already clicked. gamecard.selected: ${gamecard.selected}`
+              `Card ${gamecard.index} already clicked. gamecard.selected: ${gamecard.selected}`
             );
             console.log(`You lose, round over`);
             setGameOver(true);
             return;
           } else {
             console.log(
-              `card ${gamecard.index} hasn't been clicked. gamecard.selected: ${gamecard.selected}`
+              `card ${gamecard.index} has not been clicked. gamecard.selected: ${gamecard.selected}`
             );
             let targetCard;
             for (let i = 0; i < gameCards.length; i++) {
@@ -66,7 +66,7 @@ function Gameboard({
                       index: gameCards[j].index,
                       selected: true,
                     };
-                    console.log(newCard);
+                    // console.log(newCard);
                     newGamecards.push(newCard);
                   }
                 }
@@ -96,6 +96,9 @@ function Gameboard({
 
   function shuffleCards() {
     console.log(`shuffleCards function called`);
+
+// We never actually use this function, we just have the logic in the click listener
+
     const newArray = [];
     for (let i = 0; i < urlList.length; i++) {
       newArray.push(urlList[i]);
@@ -120,8 +123,10 @@ export default Gameboard;
 // ************************************************************************************
 // ************************************************************************************
 
-// COOL! Now we're mapping over each of our card objects and making an element, using the card object info and a key.
-// Next step finish our click handlers for the cards. Then shuffle. Then multiple rounds. And make sure no duplicate URLs
+// We are shuffling!! But there's still a bug. Play a fe rounds, it's ending the game prematurely
+
+
+// Need to allow multiple rounds. And make sure no duplicate URLs
 // Things to look up:
 // How to copy an array or object with only one property changed
 // What to do when you've got too many nested for/if loops... Looks like a christmas tree
