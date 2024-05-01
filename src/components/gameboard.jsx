@@ -22,13 +22,8 @@ function Gameboard({
     index,
     url,
     selected,
-    // currentScore,
-    // setCurrentScore,
     playerGuesses,
     setPlayerGuesses,
-    // gameCards,
-    // setGameCards,
-  
   }) {
     return (
       <div
@@ -49,75 +44,48 @@ function Gameboard({
               `card ${gamecard.index} hasn't been clicked. gamecard.selected: ${gamecard.selected}`
             );
             let targetCard;
-            for (let i = 0;i < gameCards.length;i++){
-              if (gameCards[i].index == gamecard.index){
-                console.log(`found it!`)
-                console.log(`The clicked index is ${i}`)
+            for (let i = 0; i < gameCards.length; i++) {
+              if (gameCards[i].index == gamecard.index) {
+                console.log(`found it! The clicked index is ${i}`);
                 let newGamecards = [];
-                for (let j = 0;j < gameCards.length;j++){
+                for (let j = 0; j < gameCards.length; j++) {
                   if (
                     // if this gamecard is not the one that is selected, create a copy and push it to newGamecards
                     gameCards[j].index !== i
-                  ){
+                  ) {
                     const newCard = {
                       url: gameCards[j].url,
                       index: gameCards[j].index,
                       selected: gameCards[j].selected,
-                    }
-                    console.log(newCard)
-
+                    };
                     newGamecards.push(newCard);
                   } else {
-// We're changing this card selected to true because it's the one the useer clicked
+                    // We're changing this card selected to true because it's the one the useer clicked
                     const newCard = {
                       url: gameCards[j].url,
                       index: gameCards[j].index,
                       selected: true,
-                    }
-                    console.log(newCard)
+                    };
+                    console.log(newCard);
                     newGamecards.push(newCard);
                   }
                 }
-
-
-// for (let k = 0;k < newGamecards.length;k++){
-
-// let randomIndex = Math.floor(Math.random() * newGamecards.length)
-// console.log(`randomIndex: ${randomIndex}`);
-// // ^^This works to get random number 0-11
-
-
-//   let randomCard = newGamecards.splice(randomIndex, 1);
-//   console.log(`randomCard: ${randomCard}`)
-
-//   console.log(`randomCard.index: ${randomCard.index}`)
-//   console.log(`randomCard.selected: ${randomCard.selected}`)
-//   newGamecards.push(randomCard);
-// }
-
-// All we need to do is randomize the order of newGamecards before calling the setFunction
-                setGameCards(newGamecards);
-
-// Boom! We're keeping track of what cards have been clicked. But we still need to shuffle the div elements..... ??
-
-// ************************************************************************************************************
-// Things to look up: 
-// How to copy an array or object with only one property changed
-// What to do when you've got too many nested for/if loops... Looks like a christmas tree
-// ************************************************************************************************************
-
-
+                let shuffledCards = [];
+                while (newGamecards.length > 0) {
+                  let randomIndex = Math.floor(
+                    Math.random() * newGamecards.length
+                  );
+                  let randomCard = newGamecards.splice(randomIndex, 1)[0];
+                  shuffledCards.push(randomCard);
+                }
+                setGameCards(shuffledCards);
               }
             }
-            // THEN shufflecards, set new score. 
-
-            // shuffleCards();
             setCurrentScore(currentScore + 1);
             if (topScore < currentScore + 1) {
               setTopScore(currentScore + 1);
             }
           }
-
         }}
         className="card"
       >
@@ -138,15 +106,6 @@ function Gameboard({
     }
   }
 
-  // ************************************************************************************
-  // ************************************************************************************
-
-  // COOL! Now we're mapping over each of our card objects and making an element, using the card object info and a key.
-  // Next step finish our click handlers for the cards. Then shuffle. Then multiple rounds. And make sure no duplicate URLs
-
-  // ************************************************************************************
-  // ************************************************************************************
-
   return (
     <div className="gameboard">
       {gameCards.map((card) => {
@@ -157,3 +116,15 @@ function Gameboard({
 }
 
 export default Gameboard;
+
+// ************************************************************************************
+// ************************************************************************************
+
+// COOL! Now we're mapping over each of our card objects and making an element, using the card object info and a key.
+// Next step finish our click handlers for the cards. Then shuffle. Then multiple rounds. And make sure no duplicate URLs
+// Things to look up:
+// How to copy an array or object with only one property changed
+// What to do when you've got too many nested for/if loops... Looks like a christmas tree
+
+// ************************************************************************************
+// ************************************************************************************
