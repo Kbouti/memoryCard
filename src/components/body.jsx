@@ -10,12 +10,8 @@ export default function Body() {
   const [urlsReceived, setUrlsReceived] = useState(false);
   const [urlList, setUrlList] = useState([]);
   const [gameOver, setGameOver] = useState(false);
-
-  //  *************************************************************************************
-  // New state variables:
   const [gameRound, setGameRound] = useState(0);
   const [gameCards, setGameCards] = useState([]);
-  //  *************************************************************************************
 
   const loading = ["Loading.", "Loading..", "Loading..."];
   const [loadingMessage, setLoadingMessage] = useState(loading[0]);
@@ -45,7 +41,6 @@ export default function Body() {
             last3 = last3.toLowerCase();
             if (last3 == "jpg" && newArray.length < 12) {
               newArray.push(json.url);
-              // console.log(`added a suitable url. New length: ${newArray.length}`);
             }
           }
         });
@@ -71,16 +66,17 @@ export default function Body() {
           topScore={topScore}
           urlsReceived={urlsReceived}
           gameOver={gameOver}
+          setGameOver={setGameOver}
         />
 
         {gameOver ? (
           <button
             className="restart"
             onClick={() => {
-              console.log(`restart button clicked`);
-              //  **********************************************************************
-              // Here is where we write the restart match logic
-              //  **********************************************************************
+              setUrlsReceived(false);
+              setCurrentScore(0);
+              setGameOver(false);
+              setGameRound(gameRound + 1);
             }}
           >
             Restart

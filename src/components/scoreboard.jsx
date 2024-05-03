@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Scoreboard({ currentScore, topScore, urlsReceived, gameOver }) {
+function Scoreboard({ currentScore, topScore, urlsReceived, gameOver, setGameOver }) {
   if (!urlsReceived) {
     return null;
   }
@@ -57,6 +57,7 @@ function Scoreboard({ currentScore, topScore, urlsReceived, gameOver }) {
   }
 
   if (currentScore == 12) {
+    setGameOver(true);
     return (
       <section className="scoreboard winner">
         <div className="scoreContainer">
