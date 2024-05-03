@@ -44,6 +44,11 @@ h1 {
   border-color:rgb(39, 168, 39);
 }
 
+.almost {
+  border-color:rgb(222, 89, 6);
+
+}
+
 .loser {
   border-color:red;
 }
