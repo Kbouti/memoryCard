@@ -72,6 +72,21 @@ export default function Body() {
           urlsReceived={urlsReceived}
           gameOver={gameOver}
         />
+
+        {gameOver ? (
+          <button
+            className="restart"
+            onClick={() => {
+              console.log(`restart button clicked`);
+              //  **********************************************************************
+              // Here is where we write the restart match logic
+              //  **********************************************************************
+            }}
+          >
+            Restart
+          </button>
+        ) : null}
+
         <Gameboard
           currentScore={currentScore}
           setCurrentScore={setCurrentScore}
