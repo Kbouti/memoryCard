@@ -4,6 +4,18 @@ function Scoreboard({ currentScore, topScore, urlsReceived, gameOver }) {
   if (!urlsReceived) {
     return null;
   }
+
+if (gameOver && currentScore == 1){
+  return (
+    <section className="scoreboard loser">
+    <div className="scoreContainer">
+      <label>You lost really badly. </label>
+      <label>Score: {currentScore} point</label>
+    </div>
+  </section>
+  )
+}
+
   if (gameOver && currentScore < 12) {
     return (
       <section className="scoreboard loser">
@@ -11,7 +23,7 @@ function Scoreboard({ currentScore, topScore, urlsReceived, gameOver }) {
           {currentScore < 4 ? (
             <>
               <label>You lost badly.</label>
-              <label>Score: {currentScore} point(s)</label>
+              <label>Score: {currentScore} points</label>
             </>
           ) : (
             <>
@@ -23,6 +35,8 @@ function Scoreboard({ currentScore, topScore, urlsReceived, gameOver }) {
       </section>
     );
   }
+
+
   if (currentScore == 12) {
     return (
       <section className="scoreboard winner">
