@@ -4,20 +4,31 @@ function Scoreboard({ currentScore, topScore, urlsReceived, gameOver }) {
   if (!urlsReceived) {
     return null;
   }
-  if (gameOver && currentScore < 12){
+  if (gameOver && currentScore < 12) {
     return (
-        <section className="scoreboard loser">
+      <section className="scoreboard loser">
         <div className="scoreContainer">
-          <label>You lose.... </label>
+          {currentScore < 4 ? (
+            <>
+              <label>You lost badly.</label>
+              <label>Score: {currentScore} point(s)</label>
+            </>
+          ) : (
+            <>
+              <label>You lost. </label>
+              <label>Score: {currentScore} points</label>
+            </>
+          )}
         </div>
       </section>
-    )
+    );
   }
   if (currentScore == 12) {
     return (
       <section className="scoreboard winner">
         <div className="scoreContainer">
           <label>You win! </label>
+          <label>Score: {currentScore} points</label>
         </div>
       </section>
     );

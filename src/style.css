@@ -55,6 +55,10 @@ h1 {
 }
 .scoreContainer {
   margin:0 1rem;
+  background-color:#80BCEA;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
