@@ -38,12 +38,15 @@ export default function Body() {
       while (newArray.length < 12) {
         const result = await fetch("https://random.dog/woof.json");
         result.json().then((json) => {
-          const string = json.url.toString();
-          let last3 = string.substr(string.length - 3);
-          last3 = last3.toLowerCase();
-          if (last3 == "jpg" && newArray.length < 12) {
-            newArray.push(json.url);
-            // console.log(`added a suitable url. New length: ${newArray.length}`);
+          if (!newArray.includes(json.url)) {
+            // If newArray doesn't already contain this url...
+            const string = json.url.toString();
+            let last3 = string.substr(string.length - 3);
+            last3 = last3.toLowerCase();
+            if (last3 == "jpg" && newArray.length < 12) {
+              newArray.push(json.url);
+              // console.log(`added a suitable url. New length: ${newArray.length}`);
+            }
           }
         });
       }
