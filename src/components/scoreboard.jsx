@@ -7,37 +7,44 @@ function Scoreboard({ currentScore, topScore, urlsReceived, gameOver }) {
 
   if (gameOver && currentScore == 1) {
     return (
-      <section className="scoreboard loser">
-        <div className="scoreContainer">
-          <label>You lost really badly. </label>
-          <label>Score: {currentScore} point</label>
-        </div>
-      </section>
+      <>
+        <section className="scoreboard loser">
+          <div className="scoreContainer">
+            <label>You lost really badly. </label>
+            <label>Score: {currentScore} point</label>
+          </div>
+        </section>
+        <button className="restart">Restart</button>
+      </>
     );
   }
 
   if (gameOver && currentScore < 9) {
     return (
-      <section className="scoreboard loser">
-        <div className="scoreContainer">
-          {currentScore < 4 ? (
-            <>
-              <label>You lost badly.</label>
-              <label>Score: {currentScore} points</label>
-            </>
-          ) : (
-            <>
-              <label>You lost. </label>
-              <label>Score: {currentScore} points</label>
-            </>
-          )}
-        </div>
-      </section>
+      <>
+        <section className="scoreboard loser">
+          <div className="scoreContainer">
+            {currentScore < 4 ? (
+              <>
+                <label>You lost badly.</label>
+                <label>Score: {currentScore} points</label>
+              </>
+            ) : (
+              <>
+                <label>You lost. </label>
+                <label>Score: {currentScore} points</label>
+              </>
+            )}
+          </div>
+        </section>
+        <button className="restart">Restart</button>
+      </>
     );
   }
 
   if (gameOver && currentScore < 12) {
     return (
+      <>
       <section className="scoreboard almost">
         <div className="scoreContainer">
           {currentScore < 11 ? (
@@ -53,17 +60,22 @@ function Scoreboard({ currentScore, topScore, urlsReceived, gameOver }) {
           )}
         </div>
       </section>
+      <button className="restart">Restart</button>
+      </>
     );
   }
 
   if (currentScore == 12) {
     return (
+      <>
       <section className="scoreboard winner">
         <div className="scoreContainer">
           <label>Congratulations! You're a winner! </label>
           <label>Score: {currentScore} points</label>
         </div>
       </section>
+            <button className="restart">Restart</button>
+            </>
     );
   }
   return (

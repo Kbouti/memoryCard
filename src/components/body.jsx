@@ -51,18 +51,11 @@ export default function Body() {
         });
       }
       console.log(`URL array complete. Length: ${newArray.length}`);
-
-      //  *************************************************************************************
-      //  *************************************************************************************
-      // Now we've created our card objects. Our next step is to utilize these to render our cards instead of the urlList
       const cards = [];
       for (let i = 0; i < newArray.length; i++) {
         cards.push({ url: newArray[i], index: i, selected: false });
       }
       setGameCards(cards);
-      //  *************************************************************************************
-      //  *************************************************************************************
-
       setUrlList(newArray);
       setUrlsReceived(true);
       return newArray;

@@ -110,10 +110,9 @@ export default Gameboard;
 // ************************************************************************************
 // ************************************************************************************
 
-// We are shuffling!! But there's still a bug. Play a fe rounds, it's ending the game prematurely
 
 
-// Need to allow multiple rounds. And make sure no duplicate URLs
+// Need to allow multiple rounds. 
 // Things to look up:
 // How to copy an array or object with only one property changed
 // What to do when you've got too many nested for/if loops... Looks like a christmas tree
