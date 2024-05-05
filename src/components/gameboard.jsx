@@ -110,9 +110,9 @@ export default Gameboard;
 // ************************************************************************************
 // ************************************************************************************
 
+// BUG:
+// Unable to replicate this, but there's a weird effect with the hover animation sometimes???
 
-
-// Need to allow multiple rounds. 
 // Things to look up:
 // How to copy an array or object with only one property changed
 // What to do when you've got too many nested for/if loops... Looks like a christmas tree
